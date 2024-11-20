@@ -1,0 +1,129 @@
+/* General Styles */
+.chatbot {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    font-family: 'Montserrat', sans-serif;
+  }
+  
+  .chatbot-header {
+    background-color: #4a90e2;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .chatbot-body {
+    display: flex;
+    flex-grow: 1;
+    padding: 20px;
+    background: #f0f4f8;
+    justify-content: space-between; /* Ensure two sections (buttons and chat) are spaced apart */
+  }
+  
+  .buttons-container {
+    width: 25%; /* Left side for buttons */
+    padding-right: 20px; /* Space between buttons and chat */
+  }
+  
+  .calendar-section {
+    margin-top: 20px;
+    text-align: center;
+  }
+  
+  .calendar-input {
+    padding: 10px;
+    width: 180px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-top: 10px;
+    font-size: 1rem;
+    text-align: center;
+  }
+  
+  .chat-display-container {
+    width: 70%; /* Right side for chat */
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .chat-display {
+    flex-grow: 1;
+    overflow-y: auto;
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+  }
+  
+  .chat-message {
+    margin-bottom: 10px;
+    padding: 10px 15px;
+    border-radius: 10px;
+    max-width: 60%;
+    word-wrap: break-word;
+  }
+  
+  .chat-message.user {
+    background: #d6f5d6;
+    align-self: flex-end;
+    text-align: right;
+  }
+  
+  .chat-message.bot {
+    background: #e6e6e6;
+    align-self: flex-start;
+  }
+  
+  .options-panel {
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  .options-panel h3 {
+    margin-bottom: 10px;
+  }
+  
+  .options-panel button {
+    margin: 5px;
+    padding: 10px 15px;
+    background: #4a90e2;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  .options-panel button:hover {
+    background: #357abd;
+  }
+  
+  .chat-input-area {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .chat-input-area input {
+    flex-grow: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .chat-input-area button {
+    padding: 10px 20px;
+    background: #4a90e2;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  .chat-input-area button:hover {
+    background: #357abd;
+  }
+  
