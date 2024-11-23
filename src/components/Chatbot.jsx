@@ -3,9 +3,13 @@ import "./Chatbot.css";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css"; // Import the default styles for DatePicker
 
+
+
+
 const Chatbot = () => {
   const [chatInput, setChatInput] = useState("");
   const [chatLog, setChatLog] = useState([]);
+  const [isListening, setIsListening] = useState(false);
   const [selectedDate, setSelectedDate] = useState(null); // Store the selected date
 
   const handleButtonClick = (presetText) => {
@@ -24,6 +28,36 @@ const Chatbot = () => {
     simulateBotResponse(chatInput);
     setChatInput("");
   };
+
+  const handleVoiceInput = () => {
+    if (!isListening) {
+      setIsListening(true);
+  
+      // Use the Web Speech API
+      const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+      recognition.lang = "en-US"; // Set the language
+      recognition.interimResults = false; // Only send final results
+  
+      recognition.onresult = (event) => {
+        const transcript = event.results[0][0].transcript; // Get the transcribed text
+        setIsListening(false); // Stop listening
+        addChatMessage("user", transcript); // Add the user's voice message to the chat log
+        simulateBotResponse(transcript); // Pass the voice input to your bot's logic
+      };
+  
+      recognition.onerror = (event) => {
+        console.error("Speech recognition error:", event.error);
+        setIsListening(false);
+      };
+  
+      recognition.onend = () => {
+        setIsListening(false);
+      };
+  
+      recognition.start();
+    }
+  };
+  
 
   const addChatMessage = (sender, message) => {
     setChatLog((prevLog) => [...prevLog, { sender, message }]);
@@ -109,6 +143,9 @@ const Chatbot = () => {
               placeholder="Type your message here..."
             />
             <button onClick={handleSendMessage}>Send</button>
+            <button onClick={handleVoiceInput}>
+              {isListening ?"Listening..🎙️":"🎙️"}
+            </button>
           </div>
         </div>
       </div>
